@@ -1,0 +1,153 @@
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-areas:
+      "main main"
+      "left right"
+      "sidebar sidebar";
+  }
+
+  .switcher {
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+  }
+
+  .switcher div:not(:last-of-type) {
+    flex: 1 1 170px;
+    min-height: 46px;
+  }
+
+  .switcher div:last-of-type {
+    display: none;
+  }
+
+  .switcher div.active {
+    background: var(--dark-grey);
+    border-radius: 100px;
+  }
+
+  .switcher div.active:hover {
+    background: var(--dark-grey);
+  }
+
+  .products {
+    height: auto;
+    min-height: 0;
+  }
+
+  .product-list {
+    align-items: stretch;
+  }
+
+  .deals .layout,
+  .info .layout,
+  .utility .layout,
+  .bonus {
+    flex-direction: column;
+  }
+
+  .deals .layout,
+  .info .layout,
+  .utility .layout {
+    min-height: 0;
+  }
+
+  .deals .stack,
+  .info .stack,
+  .utility .stack {
+    flex: none;
+  }
+
+  .deals .tile {
+    min-height: 180px;
+  }
+
+  .deals .tile:has(.go-mark) {
+    min-height: 96px;
+  }
+
+  .info .tile,
+  .utility .tile {
+    min-height: 150px;
+  }
+
+  .info .lead,
+  .utility .rates-card {
+    min-height: 320px;
+  }
+
+  .utility .layout,
+  .bonus {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .info .info-head {
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .info .tabbar {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero,
+  .products,
+  .deals,
+  .info {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .utility,
+  .bonus {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, minmax(160px, 1fr));
+    grid-template-areas:
+      "main"
+      "left"
+      "right"
+      "sidebar";
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .deals h2,
+  .info h2,
+  .utility h2 {
+    font-size: 34px;
+  }
+
+  .bonus .bonus-copy,
+  .deals .tile,
+  .info .tile,
+  .utility .tile {
+    padding: 22px;
+  }
+
+  .bonus h2 {
+    font-size: 31px;
+  }
+
+  .product-list {
+    justify-content: center;
+  }
+
+  .product-card {
+    width: 100%;
+    max-width: 272px;
+    height: auto;
+    min-height: 286px;
+  }
+}
