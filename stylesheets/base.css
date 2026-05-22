@@ -199,8 +199,8 @@ nav {
 }
 .hero {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: repeat(5, 20%);
   grid-template-areas:
     "main main main main sidebar"
     "main main main main sidebar"
@@ -248,7 +248,7 @@ nav {
   }
 
   .hero {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     grid-template-rows: repeat(4, minmax(180px, auto));
     grid-template-areas:
       "main"
@@ -277,14 +277,15 @@ nav {
   text-align: center;
 }
 
-.products > * {
+.products-head,
+.product-list {
   width: 100%;
   max-width: 1116px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.products > div:first-child {
+.products-head {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -292,47 +293,49 @@ nav {
 
 .switcher {
   display: flex;
-  flex-direction: row;
   position: relative;
-  width: fit-content;
-  height: 46px;
   width: 540px;
+  height: 46px;
+  max-width: calc(100vw - 32px);
+  --tab-count: 3;
   background: #edeef0;
   border-radius: 100px;
   overflow: hidden;
-  max-width: calc(100vw - 32px);
-  div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    font-size: 16px;
-    &:is(.active) {
-      color: #ffffff;
-    }
-    &:last-of-type {
-      background: var(--dark-grey);
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: calc(100% / 3);
-      border-radius: 100px;
-      z-index: 1;
-      transition: all 0.2s ease-in-out;
-    }
-  }
+}
+
+.switcher-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  font-size: 16px;
+}
+
+.switcher-option.active {
+  color: #ffffff;
+}
+
+.switcher-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(100% / var(--tab-count));
+  height: 100%;
+  border-radius: 100px;
+  background: var(--dark-grey);
+  z-index: 1;
+  transition: all 0.2s ease-in-out;
 }
 
 .product-list {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   gap: 22px;
 }
+
 .product-card {
   display: flex;
   flex-direction: column;
@@ -343,9 +346,15 @@ nav {
   padding: 28px;
   border-radius: 28px;
   overflow: hidden;
+  cursor: pointer;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 
   p {
     margin: 0;
@@ -353,13 +362,18 @@ nav {
   }
 }
 
+.bonus,
+.layout,
+.stack,
+.tile {
+  display: flex;
+}
 
 .bonus {
-  display: flex;
-  max-width: 1116px;
-  height: 72vh;
-  margin: 72px auto;
-  border-radius: 28px;
+  max-width: 1088px;
+  height: 69vh;
+  margin: 78px auto;
+  border-radius: 24px;
   overflow: hidden;
   background: #ffd4d2;
 
@@ -372,54 +386,48 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 30px;
-    padding: 58px;
+    gap: 26px;
+    padding: 54px;
   }
 
   h2 {
-    max-width: 500px;
-    font-size: 42px;
-    line-height: 1.15;
+    max-width: 470px;
+    font-size: 40px;
+    line-height: 1.18;
+    font-weight: 400;
   }
 
   button {
     width: fit-content;
-    padding: 16px 26px;
+    padding: 14px 24px;
     border: 0;
-    border-radius: 8px;
+    border-radius: 10px;
     background: #ef3124;
     color: #ffffff;
-    font-size: 18px;
-    font-weight: 800;
+    font-size: 17px;
+    font-weight: 400;
     cursor: pointer;
   }
 
   .bonus-pic {
-    background-image: url('../assets/images/йоу.jpg');
-    background-color: #ed3737;
-    background-size: 100%;
-    background-position: 50% calc(50% + 90px);
-    background-repeat: no-repeat;
+    background: #ed3737 url("../assets/images/йоу.jpg") 50% calc(50% + 78px) / 96% no-repeat;
   }
 }
 
 .layout {
-  display: flex;
-  gap: 22px;
+  gap: 24px;
   width: 100%;
-  max-width: 1116px;
+  max-width: 1088px;
 }
 
 .stack {
-  display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 20px;
 }
 
 .tile {
-  display: flex;
-  padding: 30px;
-  border-radius: 28px;
+  padding: 28px;
+  border-radius: 24px;
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
 }
@@ -432,9 +440,9 @@ nav {
   }
 
   .tile h3 {
-    font-size: 27px;
-    line-height: 1.2;
-    font-weight: 800;
+    font-size: 26px;
+    line-height: 1.24;
+    font-weight: 400;
   }
 }
 
@@ -443,25 +451,23 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 38px;
-  padding: 76px 44px;
+  gap: 34px;
+  padding: 72px 48px;
 
   h2 {
-    font-size: 46px;
+    font-size: 44px;
+    font-weight: 400;
   }
 }
 
 .deals {
   .tabbar {
-    width: min(836px, calc(100vw - 32px));
-  }
-
-  .tabbar div:last-of-type {
-    width: calc(100% / 6);
+    width: min(812px, calc(100vw - 32px));
+    --tab-count: 6;
   }
 
   .layout {
-    min-height: 404px;
+    min-height: 386px;
   }
 
   .tile {
@@ -471,16 +477,19 @@ nav {
     overflow: hidden;
   }
 
-  .tile:has(.go-mark) {
-    align-items: center;
-  }
+}
+
+.info .lead,
+.utility .invert {
+  background: var(--dark-grey);
+  color: #202124;
 }
 
 .info {
   .info-head,
   .layout {
     width: 100%;
-    max-width: 1116px;
+    max-width: 1088px;
   }
 
   .info-head {
@@ -489,53 +498,36 @@ nav {
   }
 
   .tabbar {
-    width: 318px;
-  }
-
-  .tabbar div:last-of-type {
-    width: 50%;
+    width: 306px;
+    --tab-count: 2;
   }
 
   .layout {
-    min-height: 404px;
+    min-height: 392px;
   }
 
   .tile {
     background: #f1f2f4;
   }
-
-  .lead {
-    background: #121213;
-    color: #ffffff;
-  }
-}
-
-.go-mark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 46px;
-  border-radius: 100px;
-  background: #ffffff;
-  font-size: 32px;
 }
 
 .utility {
   display: flex;
   flex-direction: column;
-  gap: 38px;
-  max-width: 1116px;
-  margin: 72px auto;
+  gap: 34px;
+  max-width: 1088px;
+  margin: 78px auto;
 
   h2 {
-    font-size: 46px;
+    font-size: 44px;
+    font-weight: 400;
   }
 
   .layout {
-    height: 72vh;
-    max-height: 72vh;
-    overflow: hidden;
+    height: auto;
+    max-height: none;
+    align-items: stretch;
+    overflow: visible;
   }
 
   .stack,
@@ -543,92 +535,165 @@ nav {
     min-height: 0;
   }
 
+  .stack {
+    flex: 1 1 0;
+  }
+
   .tile {
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    gap: 22px;
     background: #f1f2f4;
   }
 
-  .invert {
-    background: #121213;
-    color: #ffffff;
+  .utility-primary .tile:not(.rates-card) {
+    flex: 1 1 auto;
+  }
+
+  .utility-secondary {
+    gap: 16px;
+  }
+
+  .utility-secondary .tile {
+    min-height: 112px;
+    padding: 14px 20px;
+  }
+
+  .utility-secondary .tile h3 {
+    font-size: 20px;
+    line-height: 1.18;
+  }
+
+  .utility-secondary .tile p {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .utility-secondary .tile img {
+    width: 48px;
+    height: 48px;
   }
 
   .tile p {
-    margin-top: 12px;
+    margin-top: 10px;
     color: #666a73;
-    font-size: 18px;
-    line-height: 1.35;
+    font-size: 17px;
+    line-height: 1.38;
   }
 
-  .rate-head,
-  .rate-list div {
+  .rate-head {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    gap: 14px;
   }
 
-  .rate-head button {
-    height: fit-content;
-    padding: 10px 16px;
+  .rates-card h3 {
+    font-size: 20px;
+  }
+
+  .rate-mode {
+    display: flex;
+    min-width: 138px;
+    padding: 3px;
+    border-radius: 100px;
+    background: #e5e7eb;
+  }
+
+  .rate-mode button {
+    flex: 1;
+    min-height: 26px;
+    padding: 4px 8px;
     border: 0;
     border-radius: 100px;
+    background: transparent;
+    color: #121213;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  .rate-mode button.active {
     background: #202124;
     color: #ffffff;
-    font-size: 16px;
   }
 
   .rates-card {
     display: block;
-    flex-grow: 3;
+    flex-grow: 0;
+    height: 225px;
+    padding: 16px 24px;
   }
 
   .rate-list {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    margin: 28px 0;
+    gap: 6px;
+    margin: 12px 0 0;
   }
 
-  .rate-list div {
+  .rate-row {
     display: grid;
-    grid-template-columns: 1fr 80px 80px;
+    grid-template-columns: minmax(160px, auto) 54px 54px;
+    align-items: center;
+    gap: 10px;
   }
 
-  .rate-list span {
+  .rate-labels span {
     color: #666a73;
+    font-size: 12px;
+  }
+
+  .rate-value {
+    text-align: right;
+  }
+
+  .rate-currency {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .rate-currency div {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .rate-currency strong {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.05;
+  }
+
+  .rate-currency span {
+    color: #666a73;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .rate-row strong.rate-value {
+    text-align: right;
+    font-size: 15px;
+    font-weight: 500;
   }
 }
 
-.switcher div[data-card-category]:not(.active):hover,
-.switcher div[data-offer-category]:not(.active):hover,
-.switcher div[data-about-category]:not(.active):hover {
+.switcher-option:not(.active):hover {
   background: rgba(0, 0, 0, 0.08);
   border-radius: 100px;
 }
 
-.product-card {
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-
-  &:hover {
-    transform: scale(1.02);
-  }
-}
-
 @media (max-width: 760px) {
-  .products {
-    padding: 56px 16px;
-  }
-
+  .products,
   .deals {
     padding: 56px 16px;
   }
 
-  .deals .tabbar {
+  .switcher {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 50%));
     width: 100%;
     height: auto;
     border-radius: 24px;
@@ -637,7 +702,7 @@ nav {
     gap: 4px;
   }
 
-  .deals .tabbar div[data-offer-category] {
+  .switcher-option {
     min-height: 44px;
     padding: 0 10px;
     border-radius: 100px;
@@ -645,52 +710,17 @@ nav {
     line-height: 1.2;
   }
 
-  .deals .tabbar div:last-of-type {
+  .switcher-bg {
     display: none;
   }
 
-  .deals .tabbar div[data-offer-category].active {
-    background: var(--dark-grey);
-  }
-}
-
-@media (max-width: 420px) {
-  .deals .tabbar {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 760px) {
-  .switcher {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: 100%;
-    height: auto;
-    border-radius: 24px;
-    overflow: visible;
-    padding: 4px;
-    gap: 4px;
-  }
-
-  .switcher div:not(:last-of-type) {
-    min-height: 44px;
-    padding: 0 10px;
-    border-radius: 100px;
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  .switcher div:last-of-type {
-    display: none;
-  }
-
-  .switcher div.active {
+  .switcher-option.active {
     background: var(--dark-grey);
   }
 }
 
 @media (max-width: 420px) {
   .switcher {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
   }
 }
