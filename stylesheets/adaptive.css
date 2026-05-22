@@ -1,7 +1,7 @@
 @media (max-width: 900px) {
   .hero {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 25% 25%;
     grid-template-areas:
       "main main"
       "left right"
@@ -15,21 +15,21 @@
     border-radius: 24px;
   }
 
-  .switcher div:not(:last-of-type) {
+  .switcher-option {
     flex: 1 1 170px;
     min-height: 46px;
   }
 
-  .switcher div:last-of-type {
+  .switcher-bg {
     display: none;
   }
 
-  .switcher div.active {
+  .switcher-option.active {
     background: var(--dark-grey);
     border-radius: 100px;
   }
 
-  .switcher div.active:hover {
+  .switcher-option.active:hover {
     background: var(--dark-grey);
   }
 
@@ -62,21 +62,17 @@
   }
 
   .deals .tile {
-    min-height: 180px;
-  }
-
-  .deals .tile:has(.go-mark) {
-    min-height: 96px;
+    min-height: 172px;
   }
 
   .info .tile,
   .utility .tile {
-    min-height: 150px;
+    min-height: 144px;
   }
 
   .info .lead,
   .utility .rates-card {
-    min-height: 320px;
+    min-height: 0;
   }
 
   .utility .layout,
@@ -88,10 +84,18 @@
 
   .info .info-head {
     flex-direction: column;
-    gap: 22px;
+    gap: 20px;
   }
 
   .info .tabbar {
+    width: 100%;
+  }
+
+  .utility .rate-head {
+    flex-direction: column;
+  }
+
+  .utility .rate-mode {
     width: 100%;
   }
 }
@@ -112,8 +116,8 @@
   }
 
   .hero {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, minmax(160px, 1fr));
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(4, minmax(160px, auto));
     grid-template-areas:
       "main"
       "left"
@@ -126,18 +130,18 @@
   .deals h2,
   .info h2,
   .utility h2 {
-    font-size: 34px;
+    font-size: 32px;
   }
 
   .bonus .bonus-copy,
   .deals .tile,
   .info .tile,
   .utility .tile {
-    padding: 22px;
+    padding: 20px;
   }
 
   .bonus h2 {
-    font-size: 31px;
+    font-size: 30px;
   }
 
   .product-list {
@@ -149,5 +153,27 @@
     max-width: 272px;
     height: auto;
     min-height: 286px;
+  }
+
+  .utility .rate-list {
+    gap: 8px;
+  }
+
+  .utility .rate-row {
+    grid-template-columns: minmax(120px, auto) 42px 42px;
+    gap: 8px;
+  }
+
+  .utility .rate-labels span {
+    font-size: 11px;
+  }
+
+  .utility .rate-currency strong,
+  .utility .rate-row strong.rate-value {
+    font-size: 13px;
+  }
+
+  .utility .rate-currency span {
+    font-size: 11px;
   }
 }
