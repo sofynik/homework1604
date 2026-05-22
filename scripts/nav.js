@@ -260,7 +260,7 @@ navItems.forEach((item) => {
   });
 });
 
-const deals = {
+const dealsByTab = {
   mobile: [
     { title: "Альфа-выгодная связь" },
     { title: "Безлимитный интернет" },
@@ -297,7 +297,7 @@ const deals = {
   ],
 };
 
-const dealCols = {
+const dealColumns = {
   mobile: [[0], [1, 2]],
   travel: [[0, 1], [2, 3], [4, 5]],
   events: [[0, 1], [2]],
@@ -306,7 +306,7 @@ const dealCols = {
   insurance: [[0], [1, 2]],
 };
 
-const dealActs = {
+const dealActionCards = {
   mobile: 2,
   travel: 3,
   events: 1,
@@ -315,13 +315,13 @@ const dealActs = {
   insurance: 2,
 };
 
-const dealColSizes = {
+const dealColumnSizes = {
   mobile: [1, 1.5],
   travel: [1, 2, 1],
   insurance: [1, 1.45],
 };
 
-const dealSizes = {
+const dealCardSizes = {
   mobile: [[1], [5, 1]],
   travel: [[1, 1], [5, 1], [1, 1]],
   events: [[5, 1], [1]],
@@ -330,75 +330,75 @@ const dealSizes = {
   insurance: [[1], [5, 1]],
 };
 
-const dealBtns = document.querySelectorAll("[data-offer-category]");
-const dealBox = document.querySelector("[data-offers-container]");
-const dealBg = document.querySelector("[data-offer-background]");
+const dealTabs = document.querySelectorAll("[data-offer-category]");
+const dealsGrid = document.querySelector("[data-offers-container]");
+const dealSlider = document.querySelector("[data-offer-background]");
 
-function makeDealItem(deal, isMain, size) {
-  const tile = document.createElement("div");
-  tile.classList.add("tile");
-  tile.style.flexGrow = size;
+function makeDealItem(deal, highlighted, size) {
+  const dealItem = document.createElement("div");
+  dealItem.classList.add("item");
+  dealItem.style.flexGrow = size;
 
-  const title = document.createElement("h3");
-  title.textContent = deal.title;
-  tile.appendChild(title);
+  const dealTitle = document.createElement("h3");
+  dealTitle.textContent = deal.title;
+  dealItem.appendChild(dealTitle);
 
-  if (isMain) {
-    const mark = document.createElement("div");
-    mark.classList.add("go-mark");
-    mark.textContent = "→";
-    tile.appendChild(mark);
+  if (highlighted) {
+    const arrow = document.createElement("div");
+    arrow.classList.add("arrow");
+    arrow.textContent = "→";
+    dealItem.appendChild(arrow);
   }
 
-  return tile;
+  return dealItem;
 }
 
 function drawDeals(tabName) {
-  const list = deals[tabName];
-  const layout = dealCols[tabName];
-  const actionCard = dealActs[tabName];
+  const tabDeals = dealsByTab[tabName];
+  const tabLayout = dealColumns[tabName];
+  const actionCard = dealActionCards[tabName];
 
-  dealBox.innerHTML = "";
-  dealBox.dataset.offerLayout = tabName;
+  dealsGrid.innerHTML = "";
+  dealsGrid.dataset.offerLayout = tabName;
 
-  layout.forEach((items, colIndex) => {
-    const col = document.createElement("div");
-    col.classList.add("stack");
-    col.style.flexGrow = dealColSizes[tabName]?.[colIndex] || 1;
+  tabLayout.forEach((columnItems, columnIndex) => {
+    const dealColumn = document.createElement("div");
+    dealColumn.classList.add("col");
+    dealColumn.style.flexGrow = dealColumnSizes[tabName]?.[columnIndex] || 1;
 
-    items.forEach((itemIndex, rowIndex) => {
-      col.appendChild(
+    columnItems.forEach((itemIndex, rowIndex) => {
+      dealColumn.appendChild(
         makeDealItem(
-          list[itemIndex],
+          tabDeals[itemIndex],
           itemIndex === actionCard,
-          dealSizes[tabName]?.[colIndex]?.[rowIndex] || 1,
+          dealCardSizes[tabName]?.[columnIndex]?.[rowIndex] || 1,
         ),
       );
     });
 
-    dealBox.appendChild(col);
+    dealsGrid.appendChild(dealColumn);
   });
 }
 
 function setDealTab(currentTab, tabIndex) {
-  dealBtns.forEach((tab) => {
+  dealTabs.forEach((tab) => {
     tab.classList.toggle("active", tab === currentTab);
   });
 
-  dealBg.style.left = `${tabIndex * (100 / dealBtns.length)}%`;
+  dealSlider.style.left = `${tabIndex * (100 / dealTabs.length)}%`;
 }
 
-dealBtns.forEach((tab, index) => {
+dealTabs.forEach((tab, index) => {
   tab.addEventListener("click", () => {
     setDealTab(tab, index);
     drawDeals(tab.dataset.offerCategory);
   });
 });
 
-setDealTab(dealBtns[0], 0);
+setDealTab(dealTabs[0], 0);
 drawDeals("mobile");
 
-const cardData = {
+const CARD_CATEGORIES = {
   all: [
     {
       title: "Дебетовые карты",
@@ -574,39 +574,39 @@ const cardData = {
     },
   ],
 };
-let switcher = document.querySelector(".switcher");
-let cardBg = document.querySelector("[data-card-background]");
-let cardBtns = document.querySelectorAll("[data-card-category]");
-let cardBox = document.querySelector("[data-cards-container]");
+let segmentedControl = document.querySelector(".segmented-control");
+let controlBackground = document.querySelector("[data-card-background]");
+let controlButtons = document.querySelectorAll("[data-card-category]");
+let cardsContainer = document.querySelector("[data-cards-container]");
 
 renderCards("all");
-cardBtns.forEach((button) => {
+controlButtons.forEach((button) => {
   button.addEventListener("click", () => {
     renderCards(button.dataset.cardCategory);
-    for (let button of cardBtns) {
+    for (let button of controlButtons) {
       button.classList.remove("active");
     }
-    cardBg.style.left = `${button.getBoundingClientRect().left - switcher.getBoundingClientRect().left}px`;
+    controlBackground.style.left = `${button.getBoundingClientRect().left - segmentedControl.getBoundingClientRect().left}px`;
     button.classList.add("active");
   });
 });
 
 function renderCards(category) {
-  cardBox.innerHTML = "";
-  cardData[category].forEach((card) => {
-    let cardEl = document.createElement("div");
-    cardEl.classList.add("product-card");
-    cardEl.innerHTML = `
+  cardsContainer.innerHTML = "";
+  CARD_CATEGORIES[category].forEach((card) => {
+    let cardElement = document.createElement("div");
+    cardElement.classList.add("card");
+    cardElement.innerHTML = `
         <p>${card.title}</p>
         <p>${card.subtitle}</p>
       `;
-    cardEl.style.backgroundImage = `url(${card.image})`;
-    cardBox.appendChild(cardEl);
+    cardElement.style.backgroundImage = `url(${card.image})`;
+    cardsContainer.appendChild(cardElement);
     console.log(card);
   });
 }
 
-const info = {
+const infoCardsByTab = {
   achievements: [
     { title: "Альфа-Банк — лучший работодатель России" },
     { title: "Крупнейший частный банк" },
@@ -619,80 +619,80 @@ const info = {
   ],
 };
 
-const infoCols = {
+const infoColumns = {
   achievements: [[0], [1, 2]],
   career: [[0], [1, 2]],
 };
 
-const infoColSizes = {
+const infoColumnSizes = {
   achievements: [1, 1],
   career: [1, 1],
 };
 
-const infoSizes = {
+const infoCardSizes = {
   achievements: [[1], [1, 1]],
   career: [[1], [1, 1]],
 };
 
-const infoBtns = document.querySelectorAll("[data-about-category]");
-const infoBox = document.querySelector("[data-about-container]");
-const infoBg = document.querySelector("[data-about-background]");
+const infoTabs = document.querySelectorAll("[data-about-category]");
+const infoGrid = document.querySelector("[data-about-container]");
+const infoSlider = document.querySelector("[data-about-background]");
 
-function makeInfoItem(item, size, isLead) {
-  const tile = document.createElement("div");
-  tile.classList.add("tile");
-  tile.style.flexGrow = size;
+function makeInfoItem(infoItem, size, mainItem) {
+  const infoCard = document.createElement("div");
+  infoCard.classList.add("item");
+  infoCard.style.flexGrow = size;
 
-  if (isLead) {
-    tile.classList.add("lead");
+  if (mainItem) {
+    infoCard.classList.add("main");
   }
 
-  const title = document.createElement("h3");
-  title.textContent = item.title;
-  tile.appendChild(title);
+  const infoTitle = document.createElement("h3");
+  infoTitle.textContent = infoItem.title;
+  infoCard.appendChild(infoTitle);
 
-  return tile;
+  return infoCard;
 }
 
 function drawInfo(tabName) {
-  const list = info[tabName];
-  const layout = infoCols[tabName];
+  const tabCards = infoCardsByTab[tabName];
+  const tabLayout = infoColumns[tabName];
 
-  infoBox.innerHTML = "";
+  infoGrid.innerHTML = "";
 
-  layout.forEach((items, colIndex) => {
-    const col = document.createElement("div");
-    col.classList.add("stack");
-    col.style.flexGrow = infoColSizes[tabName]?.[colIndex] || 1;
+  tabLayout.forEach((columnItems, columnIndex) => {
+    const infoColumn = document.createElement("div");
+    infoColumn.classList.add("col");
+    infoColumn.style.flexGrow = infoColumnSizes[tabName]?.[columnIndex] || 1;
 
-    items.forEach((itemIndex, rowIndex) => {
-      col.appendChild(
+    columnItems.forEach((itemIndex, rowIndex) => {
+      infoColumn.appendChild(
         makeInfoItem(
-          list[itemIndex],
-          infoSizes[tabName]?.[colIndex]?.[rowIndex] || 1,
+          tabCards[itemIndex],
+          infoCardSizes[tabName]?.[columnIndex]?.[rowIndex] || 1,
           itemIndex === 0,
         ),
       );
     });
 
-    infoBox.appendChild(col);
+    infoGrid.appendChild(infoColumn);
   });
 }
 
 function setInfoTab(currentTab, tabIndex) {
-  infoBtns.forEach((tab) => {
+  infoTabs.forEach((tab) => {
     tab.classList.toggle("active", tab === currentTab);
   });
 
-  infoBg.style.left = `${tabIndex * (100 / infoBtns.length)}%`;
+  infoSlider.style.left = `${tabIndex * (100 / infoTabs.length)}%`;
 }
 
-infoBtns.forEach((tab, index) => {
+infoTabs.forEach((tab, index) => {
   tab.addEventListener("click", () => {
     setInfoTab(tab, index);
     drawInfo(tab.dataset.aboutCategory);
   });
 });
 
-setInfoTab(infoBtns[0], 0);
+setInfoTab(infoTabs[0], 0);
 drawInfo("achievements");
