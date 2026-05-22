@@ -1,177 +1,192 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="stylesheets/style.css" />
-    <script src="scripts/nav.js" defer></script>
-  </head>
-  <body>
-    <nav>
-      <div class="nav-container">
-        <div class="nav-left">
-          <a href="/" class="logo">
-            <svg height="40" viewBox="0 0 33 50" width="28" class="n5qQXQ">
-              <path
-                clip-rule="evenodd"
-                d="M0 49.982v-6.825h32.61v6.825H0zm11.646-28.764h9.064L16.39 7.526h-.17l-4.573 13.692h-.001zm10.587-16.22l9.615 28.887h-7.115l-2.16-6.866H9.698l-2.33 6.867H.679l10.09-28.887C11.746 2.197 12.887 0 16.559 0s4.744 2.206 5.674 4.999v-.001z"
-                fill="red"
-                fill-rule="evenodd"
-              ></path>
-            </svg>
-          </a>
-          <div class="menu desktop-only">
-            <div class="nav-item" data-nav="private-clients">
-              <p>Частным лицам</p>
-            </div>
-            <div class="nav-item" data-nav="small-business">
-              <p>Малому бизнесу и ИП</p>
-            </div>
-            <div class="nav-item" data-nav="large-business">
-              <p>Среднему и крупному бизнесу</p>
-            </div>
-          </div>
-        </div>
-        <div class="cta-button desktop-only">
-          <p>Стать клиентом</p>
-        </div>
-        <!-- <div class="burger-menu mobile-only"></div> -->
-      </div>
-    </nav>
-    <div class="dropdown">
-      <div class="dropdown-container">
-        <div class="titles" data-nav-titles>
-          <!-- <a href=""></a> -->
-        </div>
-        <div class="content" data-nav-content>
-          <!-- <a href=""></a> -->
-        </div>
-      </div>
-    </div>
-    <div class="overlay"></div>
-    <section class="hero">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </section>
-    <section class="services">
-      <div>
-        <h2></h2>
-        <div class="segmented-control">
-          <div class="active" data-card-category="all">Для всех</div>
-          <div data-card-category="small-business">Малому бизнесу</div>
-          <div data-card-category="large-business">Крупному бизнесу</div>
-          <div data-card-background></div>
-        </div>
-      </div>
-      <div class="cards" data-cards-container></div>
-    </section>
-    <section class="cashback">
-      <div class="text">
-        <h2>Наши клиенты получают повышенный кэшбэк у партнёров</h2>
-        <button>Стать клиентом</button>
-      </div>
-      <div class="image"></div>
-    </section>
-    <section class="tools">
-      <h2>Сервисы</h2>
-      <div class="grid">
-        <div class="col">
-          <div class="item currency">
-            <div class="head">
-              <h3>Курсы валют</h3>
-              <button>Наличные</button>
-            </div>
-            <div class="rates">
-              <div>
-                <span>Валюта</span>
-                <span>Продать</span>
-                <span>Купить</span>
+  <!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <link rel="stylesheet" href="stylesheets/style.css" />
+      <script src="scripts/nav.js" defer></script>
+    </head>
+    <body>
+      <nav>
+        <div class="nav-container">
+          <div class="nav-left">
+            <a href="/" class="logo">
+              <svg height="40" viewBox="0 0 33 50" width="28" class="n5qQXQ">
+                <path
+                  clip-rule="evenodd"
+                  d="M0 49.982v-6.825h32.61v6.825H0zm11.646-28.764h9.064L16.39 7.526h-.17l-4.573 13.692h-.001zm10.587-16.22l9.615 28.887h-7.115l-2.16-6.866H9.698l-2.33 6.867H.679l10.09-28.887C11.746 2.197 12.887 0 16.559 0s4.744 2.206 5.674 4.999v-.001z"
+                  fill="red"
+                  fill-rule="evenodd"
+                ></path>
+              </svg>
+            </a>
+            <div class="menu desktop-only">
+              <div class="nav-item" data-nav="private-clients">
+                <p>Частным лицам</p>
               </div>
-              <div>
-                <strong>USD</strong>
-                <span>72,8</span>
-                <span>74,7</span>
+              <div class="nav-item" data-nav="small-business">
+                <p>Малому бизнесу и ИП</p>
               </div>
-              <div>
-                <strong>EUR</strong>
-                <span>89</span>
-                <span>90,8</span>
-              </div>
-              <div>
-                <strong>CNY</strong>
-                <span>11,2</span>
-                <span>11,4</span>
+              <div class="nav-item" data-nav="large-business">
+                <p>Среднему и крупному бизнесу</p>
               </div>
             </div>
           </div>
-          <div class="item">
-            <div>
-              <h3>Поддержка</h3>
-              <p>Любой вопрос решим по телефону или в чате</p>
-            </div>
-            <img src="https://alfabank.servicecdn.ru/site-upload/5b/13/1449/D_CardPromo_58x58_070324.png" width="58" alt="">
+          <div class="cta-button desktop-only">
+            <p>Стать клиентом</p>
           </div>
+          <!-- <div class="burger-menu mobile-only"></div> -->
         </div>
-        <div class="col">
-          <div class="item">
-            <div>
-              <h3>Отделения банка и банкоматы</h3>
-              <p>Найдите ближайшие к вам отделения и банкоматы</p>
-            </div>
-            <img src="https://alfabank.servicecdn.ru/site-upload/7a/fc/5227/D_CardPromo_58x58_211223_2.png" width="58" alt="">
+      </nav>
+      <div class="dropdown">
+        <div class="dropdown-container">
+          <div class="titles" data-nav-titles>
+            <!-- <a href=""></a> -->
           </div>
-          <div class="item">
-            <div>
-              <h3>Платежи и переводы</h3>
-              <p>Оплачивайте и переводите деньги без комиссии</p>
-            </div>
-            <img src="https://alfabank.servicecdn.ru/site-upload/5b/13/1449/D_CardPromo_58x58_070324.png" width="58" alt="">
-          </div>
-          <div class="item">
-            <div>
-              <h3>Купить или продать недвижимость</h3>
-              <p>Сделка под ключ, быстро и безопасно</p>
-            </div>
-            <img src="https://alfabank.servicecdn.ru/site-upload/52/47/1449/D_CardPromo_58x58_071123.png" width="58" alt="">
-          </div>
-          <div class="item dark">
-            <div>
-              <h3>Оформить самозанятость</h3>
-              <p>Доходы, налоги и выгода в одном приложении</p>
-            </div>
-            <img src="https://alfabank.servicecdn.ru/site-upload/12/ec/1449/D_CardPromo_58x58_21082205.png" width="58" alt="">
+          <div class="content" data-nav-content>
+            <!-- <a href=""></a> -->
           </div>
         </div>
       </div>
-    </section>
-    <section class="offers">
-      <h2>Пользуйтесь выгодными предложениями в наших сервисах</h2>
-      <div class="segmented-control tabs">
-        <div class="active" data-offer-category="mobile">Альфа-Мобайл</div>
-        <div data-offer-category="travel">Альфа-Тревел</div>
-        <div data-offer-category="events">Афиша</div>
-        <div data-offer-category="fuel">Заправки</div>
-        <div data-offer-category="share">Подели</div>
-        <div data-offer-category="insurance">Страхование</div>
-        <div data-offer-background></div>
-      </div>
-      <div class="grid" data-offers-container></div>
-    </section>
-    <section class="about">
-      <div class="top">
-        <h2>О банке</h2>
-        <div class="segmented-control tabs">
-          <div class="active" data-about-category="achievements">Достижения</div>
-          <div data-about-category="career">Работа в Альфе</div>
-          <div data-about-background></div>
+      <div class="overlay"></div>
+      <section class="hero">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </section>
+      <section class="products">
+        <div class="products-head">
+          <h2></h2>
+          <div class="switcher">
+            <div class="switcher-option active" data-card-category="all">Для всех</div>
+            <div class="switcher-option" data-card-category="small-business">Малому бизнесу</div>
+            <div class="switcher-option" data-card-category="large-business">Крупному бизнесу</div>
+            <div class="switcher-bg" data-card-background></div>
+          </div>
         </div>
-      </div>
-      <div class="grid" data-about-container></div>
-    </section>
-    <a href="cards/card.html"></a>
-    
-  </body>
-</html>
+        <div class="product-list" data-cards-container></div>
+      </section>
+      <section class="bonus">
+        <div class="bonus-copy">
+          <h2>Наши клиенты получают повышенный кэшбэк у партнёров</h2>
+          <button>Стать клиентом</button>
+        </div>
+        <div class="bonus-pic"></div>
+      </section>
+      <section class="utility">
+        <h2>Сервисы</h2>
+        <div class="layout">
+          <div class="stack utility-primary">
+            <div class="tile rates-card">
+              <div class="rate-head">
+                <h3>Курсы валют</h3>
+                <div class="rate-mode" data-rate-mode>
+                  <button class="active" type="button" data-rate-type="cash">Наличные</button>
+                  <button type="button" data-rate-type="online">Онлайн</button>
+                </div>
+              </div>
+              <div class="rate-list">
+                <div class="rate-row rate-labels">
+                  <span>Валюта</span>
+                  <span class="rate-value">Продать</span>
+                  <span class="rate-value">Купить</span>
+                </div>
+                <div class="rate-row">
+                  <div class="rate-currency">
+                    <div>
+                      <strong>USD</strong>
+                    </div>
+                  </div>
+                  <strong class="rate-value" data-rate-value data-cash-value="68,53">68,53</strong>
+                  <strong class="rate-value" data-rate-value data-cash-value="74,73">74,73</strong>
+                </div>
+                <div class="rate-row">
+                  <div class="rate-currency">
+                    <div>
+                      <strong>EUR</strong>
+                    </div>
+                  </div>
+                  <strong class="rate-value" data-rate-value data-cash-value="79,59">79,59</strong>
+                  <strong class="rate-value" data-rate-value data-cash-value="86,29">86,29</strong>
+                </div>
+                <div class="rate-row">
+                  <div class="rate-currency">
+                    <div>
+                      <strong>CNY</strong>
+                    </div>
+                  </div>
+                  <strong class="rate-value" data-rate-value data-cash-value="10,5">10,5</strong>
+                  <strong class="rate-value" data-rate-value data-cash-value="10,63">10,63</strong>
+                </div>
+              </div>
+            </div>
+            <div class="tile">
+              <div>
+                <h3>Поддержка</h3>
+                <p>Любой вопрос решим по телефону или в чате</p>
+              </div>
+              <img src="https://alfabank.servicecdn.ru/site-upload/5b/13/1449/D_CardPromo_58x58_070324.png" width="58" alt="">
+            </div>
+          </div>
+          <div class="stack utility-secondary">
+            <div class="tile">
+              <div>
+                <h3>Отделения банка и банкоматы</h3>
+                <p>Найдите ближайшие к вам отделения и банкоматы</p>
+              </div>
+              <img src="https://alfabank.servicecdn.ru/site-upload/7a/fc/5227/D_CardPromo_58x58_211223_2.png" width="58" alt="">
+            </div>
+            <div class="tile">
+              <div>
+                <h3>Платежи и переводы</h3>
+                <p>Оплачивайте и переводите деньги без комиссии</p>
+              </div>
+              <img src="https://alfabank.servicecdn.ru/site-upload/5b/13/1449/D_CardPromo_58x58_070324.png" width="58" alt="">
+            </div>
+            <div class="tile">
+              <div>
+                <h3>Купить или продать недвижимость</h3>
+                <p>Сделка под ключ, быстро и безопасно</p>
+              </div>
+              <img src="https://alfabank.servicecdn.ru/site-upload/52/47/1449/D_CardPromo_58x58_071123.png" width="58" alt="">
+            </div>
+            <div class="tile invert">
+              <div>
+                <h3>Оформить самозанятость</h3>
+                <p>Доходы, налоги и выгода в одном приложении</p>
+              </div>
+              <img src="https://alfabank.servicecdn.ru/site-upload/12/ec/1449/D_CardPromo_58x58_21082205.png" width="58" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="deals">
+        <h2>Пользуйтесь выгодными предложениями в наших сервисах</h2>
+        <div class="switcher tabbar">
+          <div class="switcher-option active" data-offer-category="mobile">Альфа-Мобайл</div>
+          <div class="switcher-option" data-offer-category="travel">Альфа-Тревел</div>
+          <div class="switcher-option" data-offer-category="events">Афиша</div>
+          <div class="switcher-option" data-offer-category="fuel">Заправки</div>
+          <div class="switcher-option" data-offer-category="share">Подели</div>
+          <div class="switcher-option" data-offer-category="insurance">Страхование</div>
+          <div class="switcher-bg" data-offer-background></div>
+        </div>
+        <div class="layout" data-offers-container></div>
+      </section>
+      <section class="info">
+        <div class="info-head">
+          <h2>О банке</h2>
+          <div class="switcher tabbar">
+            <div class="switcher-option active" data-about-category="achievements">Достижения</div>
+            <div class="switcher-option" data-about-category="career">Работа в Альфе</div>
+            <div class="switcher-bg" data-about-background></div>
+          </div>
+        </div>
+        <div class="layout" data-about-container></div>
+      </section>
+      <a href="cards/card.html"></a>
+      
+    </body>
+  </html>
